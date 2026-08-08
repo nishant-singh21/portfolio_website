@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 
 from .forms import ContactForm
+from .models import ContactMessage
 
 CONTACT = {
     'email': 'Nishantsingh1721@gmail.com',
@@ -173,9 +174,16 @@ def home(request):
 def contact(request):
     form = ContactForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
+        ContactMessage.objects.create(
+            name=form.cleaned_data['name'],
+            email=form.cleaned_data['email'],
+            subject=form.cleaned_data['subject'],
+            message=form.cleaned_data['message'],
+        )
         # Email/notification delivery is intentionally not wired to an external
-        # SMTP server. The submitted data is logged to the server console via
-        # the console email backend configured in settings.
+        # SMTP server by default. Submitted messages are stored in the database
+        # and visible in the Django admin at /admin/. To receive real emails,
+        # set the EMAIL_* environment variables on your hosting provider.
         from django.core.mail import send_mail
         send_mail(
             subject=form.cleaned_data['subject'],
