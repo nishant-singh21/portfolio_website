@@ -458,6 +458,24 @@ button {
   margin-bottom: 26px;
 }
 
+.hero-avatar {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.1), 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.hero-avatar-img {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  background: var(--surface-strong);
+}
+
 .pulse-dot {
   width: 8px;
   height: 8px;

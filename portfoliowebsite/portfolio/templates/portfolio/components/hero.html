@@ -1,3 +1,4 @@
+{% load static %}
 <section class="hero" id="home">
   <div class="hero-bg" aria-hidden="true">
     <span class="orb orb-1"></span>
@@ -7,6 +8,14 @@
 
   <div class="hero-grid container">
     <div class="hero-copy reveal">
+      <div class="hero-avatar">
+        {% if site_profile.profile_picture %}
+        <img src="{{ site_profile.profile_picture.url }}" alt="Nishant Singh" class="hero-avatar-img">
+        {% else %}
+        <img src="{% static 'portfolio/img/profile.jpg' %}" alt="Nishant Singh" class="hero-avatar-img">
+        {% endif %}
+      </div>
+
       <p class="hero-eyebrow">
         <span class="pulse-dot" aria-hidden="true"></span>
         Available for backend developer roles
@@ -29,6 +38,17 @@
           <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
         </a>
         <a href="#contact" class="btn btn-outline">Contact Me</a>
+        {% if site_profile.resume_file %}
+        <a href="{{ site_profile.resume_file.url }}" class="btn btn-ghost" download>
+          Resume
+          <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+        </a>
+        {% else %}
+        <a href="{% static 'portfolio/resume/Nishant_Singh_Resume.pdf' %}" class="btn btn-ghost" download>
+          Resume
+          <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+        </a>
+        {% endif %}
       </div>
 
       <ul class="hero-tags" aria-label="Technologies">

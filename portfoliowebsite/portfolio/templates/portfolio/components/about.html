@@ -1,3 +1,4 @@
+{% load static %}
 <section class="section" id="about">
   <div class="container">
     <div class="section-head reveal">
@@ -55,7 +56,11 @@
         </p>
         <div class="about-actions">
           <a href="#projects" class="btn btn-primary btn-sm">View my work</a>
-          <a href="#contact" class="btn btn-outline btn-sm">Get in touch</a>
+          {% if site_profile.resume_file %}
+          <a href="{{ site_profile.resume_file.url }}" class="btn btn-outline btn-sm" download>Download Resume</a>
+          {% else %}
+          <a href="{% static 'portfolio/resume/Nishant_Singh_Resume.pdf' %}" class="btn btn-outline btn-sm" download>Download Resume</a>
+          {% endif %}
         </div>
       </div>
     </div>

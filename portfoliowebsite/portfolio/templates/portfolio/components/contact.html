@@ -1,3 +1,4 @@
+{% load static %}
 <section class="section" id="contact">
   <div class="container">
     <div class="section-head reveal">
@@ -47,6 +48,19 @@
               <span class="contact-item-body">
                 <span class="contact-label">GitHub</span>
                 <span class="contact-value">github.com/nishant-singh21</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            {% if site_profile.resume_file %}
+            <a class="contact-item" href="{{ site_profile.resume_file.url }}" download>
+            {% else %}
+            <a class="contact-item" href="{% static 'portfolio/resume/Nishant_Singh_Resume.pdf' %}" download>
+            {% endif %}
+              <span class="contact-icon" aria-hidden="true"><svg class="icon"><use href="#i-download"></use></svg></span>
+              <span class="contact-item-body">
+                <span class="contact-label">Resume</span>
+                <span class="contact-value">Download my resume (PDF)</span>
               </span>
             </a>
           </li>

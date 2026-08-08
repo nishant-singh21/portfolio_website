@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 from .forms import ContactForm
-from .models import ContactMessage
+from .models import ContactMessage, SiteProfile
 
 CONTACT = {
     'email': 'Nishantsingh1721@gmail.com',
@@ -156,10 +156,9 @@ ACHIEVEMENTS = [
 HERO_TAGS = ['Python', 'Django', 'DRF', 'Celery', 'Redis', 'MySQL', 'REST API']
 
 
-def home(request):
-    form = ContactForm()
-    return render(request, 'portfolio/home.html', {
-        'active_nav': 'home',
+def _page_context(form, active_nav):
+    return {
+        'active_nav': active_nav,
         'contact': CONTACT,
         'skill_groups': SKILL_GROUPS,
         'experience': EXPERIENCE,
@@ -168,7 +167,13 @@ def home(request):
         'achievements': ACHIEVEMENTS,
         'hero_tags': HERO_TAGS,
         'form': form,
-    })
+        'site_profile': SiteProfile.objects.first(),
+    }
+
+
+def home(request):
+    form = ContactForm()
+    return render(request, 'portfolio/home.html', _page_context(form, 'home'))
 
 
 def contact(request):
@@ -196,14 +201,4 @@ def contact(request):
             fail_silently=True,
         )
         return redirect('/#contact?sent=1')
-    return render(request, 'portfolio/home.html', {
-        'active_nav': 'contact',
-        'contact': CONTACT,
-        'skill_groups': SKILL_GROUPS,
-        'experience': EXPERIENCE,
-        'projects': PROJECTS,
-        'education': EDUCATION,
-        'achievements': ACHIEVEMENTS,
-        'hero_tags': HERO_TAGS,
-        'form': form,
-    })
+    return render(request, 'portfolio/home.html', _page_context(form, 'contact'))

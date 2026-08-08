@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContactMessage
+from .models import ContactMessage, SiteProfile
 
 
 @admin.register(ContactMessage)
@@ -14,6 +14,15 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+@admin.register(SiteProfile)
+class SiteProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'updated_at')
+    readonly_fields = ('updated_at',)
+
+    def has_add_permission(self, request):
+        return not SiteProfile.objects.exists()
 
 
 admin.site.site_header = 'Nishant Singh — Portfolio Admin'
