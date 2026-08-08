@@ -1,0 +1,21 @@
+<section class="section section-alt" id="achievements">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">// achievements</p>
+      <h2 class="section-title">Highlights &amp; <span class="grad-text">Achievements</span></h2>
+      <p class="section-sub">Milestones that back up my work.</p>
+    </div>
+
+    <div class="achievements-grid">
+      {% for item in achievements %}
+      <div class="achievement-card glass reveal">
+        <span class="achievement-icon" aria-hidden="true">
+          <svg class="icon"><use href="#i-{{ item.icon }}"></use></svg>
+        </span>
+        <h3 class="achievement-title">{{ item.title }}</h3>
+        <p class="achievement-desc">{{ item.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

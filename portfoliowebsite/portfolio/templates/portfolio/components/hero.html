@@ -1,0 +1,95 @@
+<section class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="hero-grid container">
+    <div class="hero-copy reveal">
+      <p class="hero-eyebrow">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        Available for backend developer roles
+      </p>
+
+      <h1 class="hero-title">
+        Hi, I'm <span class="grad-text">Nishant Singh</span>
+      </h1>
+
+      <p class="hero-role">Backend Developer <span class="sep">·</span> Python &amp; Django Specialist</p>
+
+      <p class="hero-desc">
+        I build scalable REST APIs and microservices with Python, Django and Django REST
+        Framework — and design the databases, queues and background workers that power them.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+
+      <ul class="hero-tags" aria-label="Technologies">
+        {% for tag in hero_tags %}
+        <li><span class="tag tag-muted">{{ tag }}</span></li>
+        {% endfor %}
+      </ul>
+
+      <div class="hero-social">
+        <a href="{{ contact.github }}" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+        </a>
+        <a href="{{ contact.linkedin }}" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+        </a>
+        <a href="mailto:{{ contact.email }}" class="social-link" aria-label="Email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-delay-1" aria-hidden="true">
+      <div class="terminal">
+        <div class="terminal-head">
+          <span class="term-dot red"></span>
+          <span class="term-dot yellow"></span>
+          <span class="term-dot green"></span>
+          <span class="term-title">nishant@backend: ~/portfolio</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="term-cmt"># core stack</span></p>
+          <p><span class="term-kw">const</span> stack = <span class="term-str">'Python'</span> + <span class="term-str">'Django'</span>;</p>
+          <p><span class="term-kw">await</span> build(<span class="term-var">api</span>, {</p>
+          <p class="indent-1"><span class="term-var">framework</span>: <span class="term-str">'DRF'</span>,</p>
+          <p class="indent-1"><span class="term-var">queue</span>: [<span class="term-str">'Celery'</span>, <span class="term-str">'Redis'</span>],</p>
+          <p class="indent-1"><span class="term-var">db</span>: <span class="term-str">'MySQL'</span>,</p>
+          <p><span class="term-var">async</span>: <span class="term-str">'microservices'</span></p>
+          <p>});</p>
+          <p class="term-out"><span class="term-caret">➜</span> server running on <span class="term-ok">0.0.0.0:8000</span> <span class="term-blink">▍</span></p>
+        </div>
+      </div>
+
+      <div class="code-card card-1">
+        <span class="code-card-icon" aria-hidden="true"><svg class="icon"><use href="#i-shield"></use></svg></span>
+        <div>
+          <p class="code-card-label">Moderation API</p>
+          <p class="code-card-value"><span class="term-ok">200</span> OK · 42ms</p>
+        </div>
+      </div>
+
+      <div class="code-card card-2">
+        <span class="code-card-icon" aria-hidden="true"><svg class="icon"><use href="#i-spark"></use></svg></span>
+        <div>
+          <p class="code-card-label">Recommendation Engine</p>
+          <p class="code-card-value">TF-IDF · cosine sim</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-hint" aria-label="Scroll to About section">
+    <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+  </a>
+</section>

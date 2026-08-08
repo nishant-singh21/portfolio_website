@@ -1,0 +1,109 @@
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">// contact</p>
+      <h2 class="section-title">Let's Build Something <span class="grad-text">Together</span></h2>
+      <p class="section-sub">Have an opportunity, a project, or a backend problem to solve? My inbox is open.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="contact-blurb">
+          I'm actively looking for backend development roles. Whether it's a full-time position,
+          a contract, or just a technical conversation — I'd love to hear from you.
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <a class="contact-item" href="mailto:{{ contact.email }}">
+              <span class="contact-icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"></use></svg></span>
+              <span class="contact-item-body">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">{{ contact.email }}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-item" href="tel:{{ contact.phone_link }}">
+              <span class="contact-icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"></use></svg></span>
+              <span class="contact-item-body">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">{{ contact.phone }}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-item" href="{{ contact.linkedin }}" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true"><svg class="icon"><use href="#i-linkedin"></use></svg></span>
+              <span class="contact-item-body">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">linkedin.com/in/nishant-singh-137869275</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-item" href="{{ contact.github }}" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true"><svg class="icon"><use href="#i-github"></use></svg></span>
+              <span class="contact-item-body">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">github.com/nishant-singh21</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form-wrap glass reveal reveal-delay-1">
+        <h3 class="contact-form-title">Send a Message</h3>
+
+        {% if request.GET.sent %}
+        <div class="form-success" role="status">
+          <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+          Thanks for reaching out! Your message has been sent and I'll get back to you soon.
+        </div>
+        {% endif %}
+
+        <form id="contact-form" method="post" action="{% url 'portfolio:contact' %}" novalidate>
+          {% csrf_token %}
+
+          {% if form.non_field_errors %}
+          <div class="form-errors" role="alert">
+            {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="{{ form.name.id_for_label }}">Your Name</label>
+              <input type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" value="{{ form.name.value|default:'' }}" placeholder="Jane Doe" autocomplete="name" required>
+              {% for error in form.name.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+            </div>
+
+            <div class="form-field">
+              <label for="{{ form.email.id_for_label }}">Your Email</label>
+              <input type="email" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default:'' }}" placeholder="jane@company.com" autocomplete="email" required>
+              {% for error in form.email.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="{{ form.subject.id_for_label }}">Subject</label>
+            <input type="text" id="{{ form.subject.id_for_label }}" name="{{ form.subject.html_name }}" value="{{ form.subject.value|default:'' }}" placeholder="Backend developer opportunity" required>
+            {% for error in form.subject.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+          </div>
+
+          <div class="form-field">
+            <label for="{{ form.message.id_for_label }}">Message</label>
+            <textarea id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" rows="5" placeholder="Tell me a bit about the role or project..." required>{{ form.message.value|default:'' }}</textarea>
+            {% for error in form.message.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Send Message
+            <svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+<header class="site-header" id="site-header">
+  <nav class="nav container" aria-label="Primary">
+    <a href="#top" class="nav-brand" aria-label="Nishant Singh - home">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span class="brand-name">Nishant<span class="brand-accent">.dev</span></span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#top" class="nav-link {% if active_nav == 'home' %}is-active{% endif %}">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li class="nav-cta-wrap">
+        <a href="https://github.com/nishant-singh21" class="btn btn-sm btn-ghost" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+          GitHub
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </nav>
+</header>

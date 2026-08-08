@@ -1,0 +1,46 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishant Singh | Backend Developer | Python & Django</title>
+  <meta name="description" content="Portfolio of Nishant Singh, a Backend Developer specializing in Python, Django, Django REST Framework, REST APIs, microservices, Celery, Redis and AI-powered applications.">
+  <meta name="author" content="Nishant Singh">
+  <meta name="theme-color" content="#0a0e17">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nishant Singh Portfolio">
+  <meta property="og:title" content="Nishant Singh | Backend Developer | Python & Django">
+  <meta property="og:description" content="Backend Developer specializing in Python, Django, Django REST Framework, REST APIs, microservices, Celery, Redis and AI-powered applications.">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nishant Singh | Backend Developer | Python & Django">
+  <meta name="twitter:description" content="Backend Developer specializing in Python, Django, Django REST Framework, REST APIs, microservices and AI-powered applications.">
+
+  <link rel="icon" href="{% static 'portfolio/img/favicon.svg' %}" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</head>
+<body>
+  {% include 'portfolio/components/navbar.html' %}
+
+  <main id="top">
+    {% include 'portfolio/components/hero.html' %}
+    {% include 'portfolio/components/about.html' %}
+    {% include 'portfolio/components/skills.html' %}
+    {% include 'portfolio/components/experience.html' %}
+    {% include 'portfolio/components/projects.html' %}
+    {% include 'portfolio/components/education.html' %}
+    {% include 'portfolio/components/achievements.html' %}
+    {% include 'portfolio/components/contact.html' %}
+  </main>
+
+  {% include 'portfolio/components/footer.html' %}
+
+  <script src="{% static 'portfolio/js/main.js' %}" defer></script>
+</body>
+</html>
