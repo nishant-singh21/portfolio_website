@@ -21,20 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG is OFF by default (safe for Render). Enable it locally with:
+#   set DJANGO_DEBUG=True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+
 # SECURITY WARNING: keep the secret key used in production secret!
+# Render sets DJANGO_SECRET_KEY automatically (see render.yaml). The fallback
+# below is Django's well-known INSECURE development key and must never be used
+# for a public site — it only exists so local commands work without extra setup.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'django-insecure-eal6e3c+x!3548qf+9gup5%t6nvergjsi5(r@lecw50*e0+9(a'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
-DEBUG = False
 
-
-# ALLOWED_HOSTS = [
-#     host.strip()
-#     for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-#     if host.strip()
-# ]
-ALLOWED_HOSTS = ["*"]
+# Hosts allowed to serve this site. Render's auto-generated hostname is added
+# below; for a custom domain, add it to the ALLOWED_HOSTS env var on Render.
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+    if host.strip()
+]
 
 if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
     ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
@@ -197,6 +202,3 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nishantsingh.dev')
-
-STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
