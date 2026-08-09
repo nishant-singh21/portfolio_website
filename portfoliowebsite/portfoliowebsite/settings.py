@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +26,15 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'django-insecure-eal6e3c+x!3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = False
 
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
     if host.strip()
 ]
+ALLOWED_HOSTS = ["*"]
+
 if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
     ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
 if os.environ.get('WEBAPP_HOSTNAME'):
@@ -78,7 +82,7 @@ ROOT_URLCONF = 'portfoliowebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'TEMPLATES'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,7 +100,7 @@ WSGI_APPLICATION = 'portfoliowebsite.wsgi.application'
 # Database
 # Uses the DATABASE_URL environment variable (e.g. PostgreSQL on Render).
 # Falls back to SQLite for local development.
-import dj_database_url
+
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -184,3 +188,6 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nishantsingh.dev')
+
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
