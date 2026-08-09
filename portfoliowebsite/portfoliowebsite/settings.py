@@ -25,14 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'django-insecure-eal6e3c+x!3548qf+9gup5%t6nvergjsi5(r@lecw50*e0+9(a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+# DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-    if host.strip()
-]
+
+# ALLOWED_HOSTS = [
+#     host.strip()
+#     for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+#     if host.strip()
+# ]
 ALLOWED_HOSTS = ["*"]
 
 if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
@@ -153,12 +154,20 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# STORAGES = {
+#     'default': {
+#         'BACKEND': 'django.core.files.storage.FileSystemStorage',
+#     },
+#     'staticfiles': {
+#         'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+#     },
+# }
 STORAGES = {
-    'default': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
-    'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
